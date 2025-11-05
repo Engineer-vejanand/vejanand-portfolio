@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Code, Star, Briefcase, Send, ChevronUp, Mail, Phone, MapPin, Twitter, Facebook, Linkedin, Github, Database, Feather, Link } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_BASE;; 
+const API_URL = import.meta.env.VITE_API_BASE; 
 
 
 const theme = {
