@@ -73,5 +73,3 @@ Sindhiya Vejanand
 [LinkedIn Profile]:https://www.linkedin.com/in/vejanand-gadhavi-b988a6263
 
 [GitHub Profile]:https://github.com/Engineer-vejanand
-
-Generated using a CV-to-Portfolio Conversion Tool.
