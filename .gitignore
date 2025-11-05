@@ -1,0 +1,55 @@
+#################################
+# FRONTEND (Vite + Tailwind)
+#################################
+
+# Node modules
+portfolio/node_modules/
+
+# Build output
+portfolio/dist/
+
+# Local env files
+portfolio/.env
+portfolio/.env.*.local
+
+# Lock files (optional — keeps repo stable if kept)
+# Uncomment to ignore them
+# package-lock.json
+# yarn.lock
+
+#################################
+# BACKEND (Node.js + Express)
+#################################
+
+backend/node_modules/
+backend/.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#################################
+# System Files
+#################################
+
+.DS_Store
+Thumbs.db
+
+#################################
+# IDE / Editor files
+#################################
+
+.vscode/
+.idea/
+
+#################################
+# Deployment Artifacts
+#################################
+
+.vercel/
+.netlify/
+
+# Render optional file
+render.yaml
