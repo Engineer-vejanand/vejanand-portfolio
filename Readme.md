@@ -40,8 +40,8 @@ Since this project is contained within a single .jsx file, setup is straightforw
 
 Clone the Repository:
 
-git clone [YOUR_REPO_URL]
-cd [YOUR_REPO_NAME]
+git clone https://github.com/Engineer-vejanand/vejanand-portfolio.git
+cd vejanand-portfolio
 
 
 Place the File: Place the portfolio.jsx content into your main React entry file (e.g., src/App.jsx or src/App.js).
@@ -70,8 +70,8 @@ Refine Content: Review and update the summary, skills, and project descriptions 
 
 Sindhiya Vejanand
 
-[LinkedIn Profile]
+[LinkedIn Profile]:https://www.linkedin.com/in/vejanand-gadhavi-b988a6263
 
-[GitHub Profile]
+[GitHub Profile]:https://github.com/Engineer-vejanand
 
 Generated using a CV-to-Portfolio Conversion Tool.
