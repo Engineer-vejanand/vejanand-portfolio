@@ -25,6 +25,9 @@ mongoose
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.log(err));
 
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Server is up and running! Use the /contact POST route." });
+});
 // ✅ Contact Form Route
 app.post("/contact", async (req, res) => {
   try {
