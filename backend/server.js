@@ -48,13 +48,17 @@ app.post("/contact", async (req, res) => {
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465, 
-    secure: true, // Use SSL/TLS
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.EMAIL,
         pass: process.env.EMAIL_PASS,
     },
+    tls: {
+        rejectUnauthorized: false
+    }
 });
+
 
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
