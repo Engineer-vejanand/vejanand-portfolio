@@ -46,18 +46,14 @@ app.post("/contact", async (req, res) => {
     //   },
     // });
 
-    const transporter = nodemailer.createTransport({
-    // Use host and port instead of 'service: "gmail"' for robustness
+const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465, // Standard SMTPS port
-    secure: true, // true for port 465, false for 587
+    port: 465, 
+    secure: true, // Use SSL/TLS
     auth: {
         user: process.env.EMAIL,
         pass: process.env.EMAIL_PASS,
     },
-    // Add logging to help debug (check Render logs!)
-    logger: true,
-    debug: true
 });
 
     const emailHtml = `
