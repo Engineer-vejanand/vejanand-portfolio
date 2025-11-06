@@ -38,13 +38,27 @@ app.post("/contact", async (req, res) => {
     await contact.save();
 
     // Send email notification
+    // const transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: process.env.EMAIL,
+    //     pass: process.env.EMAIL_PASS,
+    //   },
+    // });
+
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
+    // Use host and port instead of 'service: "gmail"' for robustness
+    host: "smtp.gmail.com",
+    port: 465, // Standard SMTPS port
+    secure: true, // true for port 465, false for 587
+    auth: {
         user: process.env.EMAIL,
         pass: process.env.EMAIL_PASS,
-      },
-    });
+    },
+    // Add logging to help debug (check Render logs!)
+    logger: true,
+    debug: true
+});
 
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
