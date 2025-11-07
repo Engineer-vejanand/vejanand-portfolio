@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 const Contact = require("./models/Contact");
 
 const { Resend } = require("resend");
@@ -100,22 +100,16 @@ app.post("/contact", async (req, res) => {
 
     console.log("📨 Trying to send email...");
 
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("❌ SMTP Error:", error);
-  } else {
-    console.log("✅ SMTP Connected:", success);
-  }
-});
 
-
-await resend.emails.send({
+const response= await resend.emails.send({
   from: "Portfolio <onboarding@resend.dev>",
   to: process.env.EMAIL,
   reply_to: email,
   subject: `New Portfolio Message from ${name}`,
   html: emailHtml,
 });
+
+  console.log("✅ Resend Email Sent:", response);
 
     res.status(200).json({ success: true, message: "Message sent successfully!" });
   } catch (err) {
