@@ -5,6 +5,9 @@ const dotenv = require("dotenv");
 const nodemailer = require("nodemailer");
 const Contact = require("./models/Contact");
 
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 dotenv.config();
 const app = express();
 
@@ -46,18 +49,6 @@ app.post("/contact", async (req, res) => {
     //   },
     // });
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASS,
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
 
 
     const emailHtml = `
@@ -118,16 +109,13 @@ transporter.verify((error, success) => {
 });
 
 
-    await transporter.sendMail({
-      from: process.env.EMAIL,
-      to: process.env.EMAIL,
-      replyTo: email,
-      subject: `New Portfolio Message from ${name}`, // Personalized subject line
-      html: emailHtml,
-    })
-    .then(info => console.log("✅ Email Sent:", info))
-    .catch(err => console.error("❌ Email Send Failed:", err));
-
+await resend.emails.send({
+  from: "Portfolio <onboarding@resend.dev>",
+  to: process.env.EMAIL,
+  reply_to: email,
+  subject: `New Portfolio Message from ${name}`,
+  html: emailHtml,
+});
 
     res.status(200).json({ success: true, message: "Message sent successfully!" });
   } catch (err) {
