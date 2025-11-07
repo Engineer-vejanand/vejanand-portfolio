@@ -107,13 +107,26 @@ const transporter = nodemailer.createTransport({
       </div>
     `;
 
+    console.log("📨 Trying to send email...");
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ SMTP Error:", error);
+  } else {
+    console.log("✅ SMTP Connected:", success);
+  }
+});
+
+
     await transporter.sendMail({
       from: process.env.EMAIL,
       to: process.env.EMAIL,
       replyTo: email,
       subject: `New Portfolio Message from ${name}`, // Personalized subject line
       html: emailHtml,
-    });
+    })
+    .then(info => console.log("✅ Email Sent:", info))
+    .catch(err => console.error("❌ Email Send Failed:", err));
 
 
     res.status(200).json({ success: true, message: "Message sent successfully!" });
