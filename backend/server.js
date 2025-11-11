@@ -102,7 +102,7 @@ app.post("/contact", async (req, res) => {
 
 
 const response= await resend.emails.send({
-  from: `Portfolio <${process.env.EMAIL}>`,
+  from: `Portfolio <${process.env.SENDEMAIL}>`,
   to: process.env.EMAIL,
   reply_to: email,
   subject: `New Portfolio Message from ${name}`,
